@@ -8,7 +8,7 @@ import { MagicButton } from './ui/MagicButton'
 export const Hero = () => {
   return (
     <div className=' flex   min-h-screen  items-center px-8'>
-       <BackgroundRippleEffect rows={14}/>
+       <BackgroundRippleEffect rows={15}/>
        <div className='flex sm:flex-col md:flex-col lg:flex-row gap-8 flex-col z-10 '>
             <div className='flex  flex-1 flex-col justify-center '>
                 <TextGenerateEffect words='You Perfect Cut, Every time'/>
