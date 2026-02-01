@@ -1,6 +1,5 @@
 import React from 'react'
 import {BackgroundRippleEffect} from "@/components/ui/background-ripple-effect"
-import { Nav } from './Nav'
 import { TextGenerateEffect } from './ui/text-generate-effect'
 import { DirectionAwareHover } from './ui/direction-aware-hover'
 import { MagicButton } from './ui/MagicButton'

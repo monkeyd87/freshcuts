@@ -43,3 +43,19 @@ export const subscriptions = {
         benifit:['standard booking fee','Basic AI generation','48hr canecellation policy']
     },
 }
+
+
+export const navItems = [
+    {
+      name: "Features",
+      link: "#features",
+    },
+    {
+      name: "Pricing",
+      link: "#pricing",
+    },
+    {
+      name: "Ai stylist",
+      link: "#ai",
+    },
+  ];

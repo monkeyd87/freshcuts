@@ -6,7 +6,7 @@ export const Pricing = () => {
   return (
    <section className='bg-[#1E2952]'>
     <h1 className='text-3xl text-center'>Simple pricing for clients</h1>
-    <div className='flex justify-center items-center gap-20 mt-20' >
+    <div className='flex justify-center align-bottom p-4 items-center gap-20 mt-20' >
        <PricingCard 
        tierLabel='Pay as you go!!'
        planName='Standard'
