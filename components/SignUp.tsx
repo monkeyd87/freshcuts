@@ -12,7 +12,7 @@ import {
 
 export function SignupFormDemo() {
   const [formData, setFormData] = useState({
-    firstname: "",
+    name: "",
     email: "",
     password: "",
   });
@@ -21,17 +21,26 @@ export function SignupFormDemo() {
     e.preventDefault();
     console.log("Form submitted");
     console.log(formData);
-    const response = await fetch("/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    if (response.ok) {
-      console.log("Signup successful");
-    } else {
-      console.error("Signup failed");
+    
+
+    try{
+
+        const response = await fetch("/api/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+        if (response.ok) {
+          console.log("Signup successful");
+        } else {
+
+          console.log(response)
+          console.error("Signup failed");
+        }
+    } catch (error) {
+      console.error("Error occurred while signing up:", error);
     }
   };
   return (
@@ -42,8 +51,8 @@ export function SignupFormDemo() {
       <form className="my-8" onSubmit={handleSubmit}>
         <div className="mb-4 flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
           <LabelInputContainer>
-            <Label htmlFor="firstname">First name</Label>
-            <Input id="firstname" placeholder="Tyler" type="text" value={formData.firstname} onChange={(e) => setFormData({ ...formData, firstname: e.target.value })} />
+            <Label htmlFor="name">First name</Label>
+            <Input id="name" placeholder="Tyler" type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
           </LabelInputContainer>
           {/* <LabelInputContainer>
             <Label htmlFor="lastname">Last name</Label>
