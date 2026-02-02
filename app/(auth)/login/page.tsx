@@ -1,11 +1,11 @@
 import React from 'react'
-import {SignupFormDemo} from "@/components/SignUp"
+import {Login} from "@/components/Login"
 
 
 const page = () => {
   return (
     <div className='flex justify-center items-center h-screen sm:flex-col'> 
-            <SignupFormDemo/>
+            <Login/>
     </div>
   )
 }
