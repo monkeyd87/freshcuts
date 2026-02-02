@@ -7,7 +7,7 @@ export async function GET(){
     try{
         const conn = await connectDB()
         const users = await User.find()
-        // .select('-passwordHash')x
+        .select('-passwordHash')
         .lean()
         if(users.length === 0) return Response.json({message:'No Users Found!!!'},{status:400})
         return Response.json(users,{status:200})

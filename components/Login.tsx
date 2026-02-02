@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Label } from "@/components/ui/Label";
 import { Input } from "@/components/ui/Input";
@@ -15,6 +16,9 @@ export function Login() {
     email: "",
     password: "",
   });
+
+  const router = useRouter();
+
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,7 +36,8 @@ export function Login() {
           body: JSON.stringify(formData),
         });
         if (response.ok) {
-          console.log("Signup successful");
+          console.log("Signup successful")
+          router.push("/dashboard/me");
         } else {
 
           console.log(response)
