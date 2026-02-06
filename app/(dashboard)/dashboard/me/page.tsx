@@ -9,6 +9,8 @@ import {
 } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import { BasicCard } from "@/components/ui/BasicCard";
+import { AppointmentCard } from "@/components/ui/AppointmentCard";
 
 export default function Dashboard() {
 
@@ -95,6 +97,26 @@ export default function Dashboard() {
         </Sidebar>
         <div className="flex flex-1">
       <div className="flex h-full w-full flex-1 flex-col gap-2 rounded-tl-2xl border border-neutral-200 bg-white p-2 md:p-10 dark:border-neutral-700 dark:bg-neutral-900">
+          <h1 className="text-5xl capitalize font-bold">{user.name}</h1>
+          <p className="opacity-50">looking fresh? Here what we have going today.</p>
+          <div>
+            <div className="flex flex-row justify-around items-baseline gap-3.5 mb-25">
+              <BasicCard title="Total Hair cuts,"/>
+              <BasicCard title="Money Saved."/>
+              <BasicCard title="Criedts left"/>
+            </div>
+            <div className="mb-25">
+              <div className="flex justify-between items-baseline mb-3">
+                <h2 className="text-2xl font-semibold">Your next appointment</h2>
+                <h2 className="text-lg opacity-50">Membership</h2>
+              </div>
+              <AppointmentCard />
+            </div>
+            <div className="">
+              <h2 className="text-2xl font-semibold">Top rated barbers</h2>
+            </div>
+            <div></div>
+          </div>
        
       </div>
     </div>
