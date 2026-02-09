@@ -11,6 +11,7 @@ import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { BasicCard } from "@/components/ui/BasicCard";
 import { AppointmentCard } from "@/components/ui/AppointmentCard";
+import { MembershipCard } from "@/components/ui/MembershipCard";
 
 export default function Dashboard() {
 
@@ -103,14 +104,17 @@ export default function Dashboard() {
             <div className="flex flex-row justify-around items-baseline gap-3.5 mb-25">
               <BasicCard title="Total Hair cuts,"/>
               <BasicCard title="Money Saved."/>
-              <BasicCard title="Criedts left"/>
+              <BasicCard title="Credits left"/>
             </div>
             <div className="mb-25">
               <div className="flex justify-between items-baseline mb-3">
                 <h2 className="text-2xl font-semibold">Your next appointment</h2>
                 <h2 className="text-lg opacity-50">Membership</h2>
               </div>
-              <AppointmentCard />
+              <div className="flex justify-between gap-8">
+                <AppointmentCard />
+                <MembershipCard />
+              </div>
             </div>
             <div className="">
               <h2 className="text-2xl font-semibold">Top rated barbers</h2>
