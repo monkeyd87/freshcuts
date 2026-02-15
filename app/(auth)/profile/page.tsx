@@ -6,9 +6,14 @@ import { connectDB } from "@/lib/mongoose";
 export default async function ProfilePage() {
   await connectDB();
 
-  const token = await cookies().get("auth")?.value!;
-  const payload = verifyToken(token);
+  const cookieStore = await cookies();
+  const token = cookieStore.get("auth")?.value;
 
+  if (!token) {
+    return <div className="p-6">Unauthorized. Please login.</div>;
+  }
+
+  const payload = verifyToken(token);
   const user = await User.findById(payload.id).select("-passwordHash");
 
   return (

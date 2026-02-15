@@ -11,8 +11,8 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
- 
-export function NavBar({navItems}:{navItems?:[{name:string,link:string}]}) {
+
+export function NavBar({ navItems }: { navItems?: [{ name: string, link: string }] }) {
   // const navItems = [
   //   {
   //     name: "Features",
@@ -27,22 +27,33 @@ export function NavBar({navItems}:{navItems?:[{name:string,link:string}]}) {
   //     link: "#ai",
   //   },
   // ];
- 
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
- 
+
+  const handleLogout = async () => {
+    try {
+      const res = await fetch("/api/auth/logout", { method: "POST" });
+      if (res.ok) {
+        window.location.href = "/";
+      }
+    } catch (err) {
+      console.error("Logout failed", err);
+    }
+  };
+
   return (
     <div className="relative w-full">
       <Navbar>
         {/* Desktop Navigation */}
         <NavBody>
           <NavbarLogo />
-          <NavItems items={navItems||[]} />
+          <NavItems items={navItems || []} />
           <div className="flex items-center gap-4">
-            <NavbarButton variant="secondary">Login</NavbarButton>
-            <NavbarButton variant="primary">Book a call</NavbarButton>
+            <NavbarButton variant="secondary" onClick={() => window.location.href = "/login"}>Login</NavbarButton>
+            <NavbarButton variant="primary" onClick={handleLogout}>Logout</NavbarButton>
           </div>
         </NavBody>
- 
+
         {/* Mobile Navigation */}
         <MobileNav>
           <MobileNavHeader>
@@ -52,7 +63,7 @@ export function NavBar({navItems}:{navItems?:[{name:string,link:string}]}) {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             />
           </MobileNavHeader>
- 
+
           <MobileNavMenu
             isOpen={isMobileMenuOpen}
             onClose={() => setIsMobileMenuOpen(false)}
@@ -69,18 +80,18 @@ export function NavBar({navItems}:{navItems?:[{name:string,link:string}]}) {
             ))}
             <div className="flex w-full flex-col gap-4">
               <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => window.location.href = "/login"}
                 variant="primary"
                 className="w-full"
               >
                 Login
               </NavbarButton>
               <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
+                onClick={handleLogout}
+                variant="secondary"
                 className="w-full"
               >
-                Book a call
+                Logout
               </NavbarButton>
             </div>
           </MobileNavMenu>
@@ -89,4 +100,3 @@ export function NavBar({navItems}:{navItems?:[{name:string,link:string}]}) {
     </div>
   );
 }
- 
