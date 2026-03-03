@@ -1,7 +1,15 @@
 import mongoose from "mongoose";
 
 // const MONGODB_URI ='mongodb://localhost:27017/port3';
-const MONGODB_URI = process.env.MONGODB_URI;
+let MONGODB_URI = process.env.MONGODB_URI;
+
+if (MONGODB_URI && MONGODB_URI.includes("?freshcuts=Cluster0")) {
+  MONGODB_URI = MONGODB_URI.replace(
+    "?freshcuts=Cluster0",
+    "freshcuts?retryWrites=true&w=majority"
+  );
+}
+
 if (!MONGODB_URI) throw new Error("Missing MONGODB_URI in environment variables.");
 
 type MongooseCache = {
@@ -26,10 +34,10 @@ export async function connectDB() {
       .connect(MONGODB_URI!)
       .then((m) => m);
   }
-  
+
 
   cached.conn = await cached.promise;
-  
+
   return cached.conn;
 }
 
