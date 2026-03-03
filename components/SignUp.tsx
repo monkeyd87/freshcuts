@@ -13,6 +13,7 @@ export function SignupFormDemo() {
     name: "",
     email: "",
     password: "",
+    role: "client",
   });
 
   const [loading, setLoading] = useState(false);
@@ -94,6 +95,36 @@ export function SignupFormDemo() {
             }
             required
           />
+        </LabelInputContainer>
+
+        <LabelInputContainer className="mb-8">
+          <Label>Account Type</Label>
+          <div className="flex w-full rounded-md border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 p-1">
+            <button
+              type="button"
+              className={cn(
+                "flex-1 rounded-sm py-2 text-sm font-medium transition-all duration-200",
+                formData.role === "client"
+                  ? "bg-white text-neutral-900 shadow-sm dark:bg-black dark:text-white"
+                  : "text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
+              )}
+              onClick={() => setFormData({ ...formData, role: "client" })}
+            >
+              Client
+            </button>
+            <button
+              type="button"
+              className={cn(
+                "flex-1 rounded-sm py-2 text-sm font-medium transition-all duration-200",
+                formData.role === "barber"
+                  ? "bg-white text-neutral-900 shadow-sm dark:bg-black dark:text-white"
+                  : "text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
+              )}
+              onClick={() => setFormData({ ...formData, role: "barber" })}
+            >
+              Barber
+            </button>
+          </div>
         </LabelInputContainer>
 
         {error && (
